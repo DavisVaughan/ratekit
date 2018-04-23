@@ -12,11 +12,16 @@ spot_rate_factory <- function(beta_0, beta_1, beta_2, beta_3, tau_1, tau_2) {
   # Spot rate function based on Equation 22 of
   # Gurkaynak, Sack and Wright (2006)
   spot_rate_n <- function(n) {
+
+    spot_rate_percentage <-
     beta_0 +
     beta_1 *  (1 - exp( -n / tau_1)) / (n / tau_1) +
     beta_2 * ((1 - exp( -n / tau_1)) / (n / tau_1) - exp( -n / tau_1)) +
     beta_3 * ((1 - exp( -n / tau_2)) / (n / tau_2) - exp( -n / tau_2))
+
+    spot_rate_percentage / 100
   }
+
 
   spot_rate_n
 }
